@@ -10,23 +10,14 @@
       --bg: #0a0a0f; --surface: #111118; --card: #16161f; --border: #2a2a3a;
       --accent: #4f8cff; --accent2: #a78bfa; --green: #34d399;
       --text: #e8e8f0; --muted: #7070a0;
-      /* Definições de fontes mais naturais */
       --font-display: 'Outfit', sans-serif; 
       --font-main: 'Inter', sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { 
-      background: var(--bg); 
-      color: var(--text); 
-      font-family: var(--font-main); 
-      line-height: 1.6; 
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-main); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.4; }
 
-    /* NAV */
     nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1.2rem 3rem; background:rgba(10,10,15,0.85); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
     .nav-logo { display:flex; align-items:center; gap:0.6rem; text-decoration:none; }
     .logo-pc { width:36px; height:29px; flex-shrink:0; filter:drop-shadow(0 0 6px rgba(79,140,255,0.4)); transition:filter 0.3s; }
@@ -37,11 +28,12 @@
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
     .logo-text { font-family:var(--font-display); font-weight:800; font-size:1.1rem; letter-spacing:-0.01em; color:var(--text); }
     .logo-dot { color:var(--accent); }
-    .nav-links { display:flex; gap:2rem; list-style:none; }
-    .nav-links a { color:var(--muted); text-decoration:none; font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase; transition:color 0.2s; font-weight: 500; }
-    .nav-links a:hover { color:var(--accent); }
+    .nav-center { display:flex; gap:2rem; list-style:none; }
+    .nav-center a { color:var(--muted); text-decoration:none; font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase; transition:color 0.2s; font-weight: 500; }
+    .nav-center a:hover { color:var(--accent); }
+    .lang-toggle { background:var(--card); border:1px solid var(--border); color:var(--muted); padding:0.5rem 1rem; border-radius:8px; cursor:pointer; font-size:0.75rem; font-weight:600; text-transform:uppercase; transition:all 0.2s; }
+    .lang-toggle:hover { border-color:var(--accent); color:var(--accent); }
 
-    /* HERO */
     #hero { min-height:100vh; display:flex; align-items:center; padding:8rem 3rem 4rem; position:relative; overflow:hidden; }
     .hero-glow { position:absolute; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(79,140,255,0.12) 0%,transparent 70%); top:10%; left:-10%; pointer-events:none; }
     .hero-glow2 { position:absolute; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle,rgba(167,139,250,0.08) 0%,transparent 70%); bottom:10%; right:5%; pointer-events:none; }
@@ -66,13 +58,11 @@
     .photo-frame::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(79,140,255,0.1),transparent 60%); }
     .photo-decoration { position:absolute; top:-12px; right:-12px; width:100%; height:100%; border:1px solid rgba(79,140,255,0.3); border-radius:16px; pointer-events:none; }
 
-    /* SECTIONS */
     section { padding:6rem 3rem; max-width:1100px; margin:0 auto; scroll-margin-top:80px; }
     .section-label { font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.75rem; font-weight: 600; }
     .section-label::after { content:''; flex:1; height:1px; background:var(--border); }
     h2 { font-family:var(--font-display); font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; letter-spacing:-0.03em; margin-bottom:3rem; }
 
-    /* CURRENTLY */
     .currently-card { background:linear-gradient(135deg,rgba(79,140,255,0.08),rgba(167,139,250,0.05)); border:1px solid rgba(79,140,255,0.3); border-radius:16px; padding:2rem 2.5rem; display:flex; align-items:center; gap:2rem; margin-bottom:4rem; position:relative; overflow:hidden; }
     .currently-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:linear-gradient(180deg,var(--accent),var(--accent2)); }
     .status-dot { width:10px; height:10px; border-radius:50%; background:var(--green); box-shadow:0 0 0 3px rgba(52,211,153,0.2); animation:pulse 2s infinite; flex-shrink:0; }
@@ -80,12 +70,10 @@
     .currently-text strong { font-family:var(--font-display); font-weight:700; font-size:1.05rem; display:block; margin-bottom:0.25rem; }
     .currently-text span { color:var(--muted); font-size:0.85rem; }
 
-    /* ABOUT */
     .about-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2.5rem; position:relative; overflow:hidden; }
     .about-card::before { content:'"'; position:absolute; top:-0.5rem; left:1.5rem; font-size:8rem; font-family:var(--font-display); color:rgba(79,140,255,0.07); line-height:1; pointer-events:none; }
     .about-text { font-size:1.05rem; line-height:1.9; color:var(--text); position:relative; z-index:1; }
 
-    /* TIMELINE */
     .timeline { position:relative; display:flex; flex-direction:column; gap:1.5rem; }
     .timeline::before { content:''; position:absolute; left:20px; top:0; bottom:0; width:1px; background:var(--border); }
     .timeline-item { display:grid; grid-template-columns:44px 1fr; gap:1.5rem; align-items:start; }
@@ -99,28 +87,24 @@
     .timeline-body { font-size:0.85rem; color:var(--muted); line-height:1.7; }
     .grade-badge { display:inline-flex; align-items:center; gap:0.4rem; margin-top:0.75rem; background:rgba(52,211,153,0.08); border:1px solid rgba(52,211,153,0.2); color:var(--green); font-size:0.72rem; padding:0.25rem 0.7rem; border-radius:999px; font-weight: 600; }
 
-    /* SKILLS */
     .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.25rem; }
     .skill-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.5rem; transition:all 0.2s; }
     .skill-card:hover { border-color:var(--accent); transform:translateY(-2px); }
     .skill-icon { font-size:1.5rem; margin-bottom:0.75rem; }
-    .skill-name { font-family:var(--font-display); font-weight:700; font-size:0.95rem; margin-bottom:0.5rem; }
+    .skill-name { font-family:var(--font-display); font-weight:700; font-size:0.9rem; margin-bottom:0.5rem; }
     .skill-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.75rem; }
-    .skill-tag { font-size:0.72rem; color:var(--muted); background:var(--surface); border:1px solid var(--border); padding:0.2rem 0.55rem; border-radius:4px; font-weight: 500; }
+    .skill-tag { font-size:0.68rem; color:var(--muted); background:var(--surface); border:1px solid var(--border); padding:0.2rem 0.55rem; border-radius:4px; font-weight:500; }
 
-    /* LANGUAGES */
     .lang-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; }
     .lang-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.5rem; text-align:center; }
     .lang-flag { font-size:2rem; margin-bottom:0.75rem; }
     .lang-name { font-family:var(--font-display); font-weight:700; font-size:1rem; margin-bottom:0.25rem; }
-    .lang-level { font-size:0.75rem; color:var(--accent); letter-spacing:0.04em; font-weight: 600; }
+    .lang-level { font-size:0.75rem; color:var(--accent); letter-spacing:0.08em; font-weight:600; }
 
-    /* HOBBIES */
     .hobbies-row { display:flex; flex-wrap:wrap; gap:1rem; }
-    .hobby-pill { background:var(--card); border:1px solid var(--border); border-radius:999px; padding:0.65rem 1.4rem; font-size:0.85rem; display:flex; align-items:center; gap:0.5rem; transition:all 0.2s; font-weight: 500; }
+    .hobby-pill { background:var(--card); border:1px solid var(--border); border-radius:999px; padding:0.65rem 1.4rem; font-size:0.85rem; display:flex; align-items:center; gap:0.5rem; transition:all 0.2s; font-weight:500; }
     .hobby-pill:hover { border-color:var(--accent2); color:var(--accent2); }
 
-    /* PROJECTS */
     .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.25rem; }
     .project-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.5rem; transition:all 0.25s; display:flex; flex-direction:column; }
     .project-card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:0 12px 32px rgba(79,140,255,0.08); }
@@ -129,471 +113,508 @@
     .project-link { width:32px; height:32px; border-radius:8px; background:var(--surface); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--muted); text-decoration:none; font-size:1rem; transition:all 0.2s; }
     .project-link:hover { border-color:var(--accent); color:var(--accent); }
     .project-title { font-family:var(--font-display); font-weight:700; font-size:1rem; margin-bottom:0.5rem; }
-    .project-desc { font-size:0.85rem; color:var(--muted); line-height:1.7; flex:1; }
+    .project-desc { font-size:0.82rem; color:var(--muted); line-height:1.7; flex:1; }
 
-    /* DRIVE BANNER */
     .drive-banner { background:linear-gradient(135deg,rgba(79,140,255,0.08),rgba(167,139,250,0.06)); border:1px solid rgba(79,140,255,0.25); border-radius:14px; padding:1.5rem 2rem; display:flex; align-items:center; gap:1.5rem; margin-bottom:2rem; text-decoration:none; color:var(--text); transition:all 0.2s; }
     .drive-banner:hover { border-color:var(--accent); transform:translateY(-2px); box-shadow:0 8px 24px rgba(79,140,255,0.1); }
     .drive-icon { font-size:2.2rem; flex-shrink:0; }
     .drive-banner strong { font-family:var(--font-display); font-weight:700; font-size:1rem; display:block; margin-bottom:0.2rem; }
-    .drive-banner span { font-size:0.85rem; color:var(--muted); }
+    .drive-banner span { font-size:0.8rem; color:var(--muted); }
     .drive-arrow { margin-left:auto; font-size:1.3rem; color:var(--accent); flex-shrink:0; }
 
-    /* CONTACT */
     .contact-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1rem; }
     .contact-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.25rem 1.5rem; display:flex; align-items:center; gap:1rem; text-decoration:none; color:var(--text); transition:all 0.2s; }
     .contact-card:hover { border-color:var(--accent); transform:translateY(-2px); }
     .contact-icon { width:40px; height:40px; border-radius:8px; background:rgba(79,140,255,0.1); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
-    .contact-label { font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.15rem; font-weight: 600; }
-    .contact-value { font-size:0.85rem; font-weight: 500; }
+    .contact-label { font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.15rem; font-weight:600; }
+    .contact-value { font-size:0.85rem; font-family:var(--font-main); }
 
-    /* FOOTER */
-    footer { text-align:center; padding:3rem; border-top:1px solid var(--border); color:var(--muted); font-size:0.75rem; letter-spacing:0.02em; }
-    footer span { color:var(--accent); font-weight: 600; }
+    footer { text-align:center; padding:3rem; border-top:1px solid var(--border); color:var(--muted); font-size:0.75rem; letter-spacing:0.04em; }
+    footer span { color:var(--accent); }
 
-    /* ANIMATIONS */
-    .fade-in { opacity:0; transform:translateY(24px); animation:fadeIn 0.7s ease forwards; }
-    @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
-    .fade-in:nth-child(1){animation-delay:0.1s} .fade-in:nth-child(2){animation-delay:0.2s}
-    .fade-in:nth-child(3){animation-delay:0.3s} .fade-in:nth-child(4){animation-delay:0.4s}
-    .fade-in:nth-child(5){animation-delay:0.5s}
-
-    /* WHATSAPP FLOAT */
-    .whatsapp-float { position:fixed; bottom:2rem; right:2rem; z-index:200; background:#25D366; color:#fff; border-radius:999px; padding:0.85rem 1.4rem; display:flex; align-items:center; gap:0.6rem; font-size:0.85rem; font-weight: 600; text-decoration:none; box-shadow:0 4px 24px rgba(37,211,102,0.35); transition:all 0.2s; }
+    .whatsapp-float { position:fixed; bottom:2rem; right:2rem; z-index:200; background:#25D366; color:#fff; border-radius:999px; padding:0.85rem 1.4rem; display:flex; align-items:center; gap:0.6rem; font-family:var(--font-main); font-size:0.82rem; text-decoration:none; box-shadow:0 4px 24px rgba(37,211,102,0.35); transition:all 0.2s; font-weight:600; }
     .whatsapp-float:hover { background:#1ebe5d; transform:translateY(-3px); }
     .whatsapp-float svg { width:20px; height:20px; flex-shrink:0; }
 
-    /* ── ADMIN ── */
-    #admin-btn { position:fixed; bottom:2rem; left:2rem; z-index:200; background:var(--card); border:1px solid var(--border); color:var(--muted); border-radius:999px; padding:0.65rem 1.2rem; font-size:0.75rem; font-weight: 600; cursor:pointer; transition:all 0.2s; }
+    #admin-btn { position:fixed; bottom:2rem; left:2rem; z-index:200; background:var(--card); border:1px solid var(--border); color:var(--muted); border-radius:999px; padding:0.65rem 1.2rem; font-family:var(--font-main); font-size:0.75rem; cursor:pointer; transition:all 0.2s; font-weight:600; }
     #admin-btn:hover { border-color:var(--accent); color:var(--accent); }
 
     #admin-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:1000; backdrop-filter:blur(8px); align-items:center; justify-content:center; }
     #admin-overlay.open { display:flex; }
     #admin-panel { background:var(--surface); border:1px solid var(--border); border-radius:20px; width:min(700px,95vw); max-height:90vh; overflow-y:auto; padding:2.5rem; position:relative; }
     #admin-panel h3 { font-family:var(--font-display); font-size:1.4rem; font-weight:800; margin-bottom:0.25rem; }
-    .admin-sub { color:var(--muted); font-size:0.85rem; margin-bottom:2rem; }
+    .admin-sub { color:var(--muted); font-size:0.8rem; margin-bottom:2rem; }
     .admin-close { position:absolute; top:1.5rem; right:1.5rem; background:var(--card); border:1px solid var(--border); color:var(--muted); width:32px; height:32px; border-radius:8px; cursor:pointer; font-size:1rem; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
     .admin-close:hover { border-color:var(--accent); color:var(--accent); }
 
     .login-field { margin-bottom:1rem; }
-    .login-field label { display:block; font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.4rem; font-weight: 600; }
-    .login-field input { width:100%; background:var(--card); border:1px solid var(--border); color:var(--text); padding:0.75rem 1rem; border-radius:8px; font-size:0.9rem; outline:none; transition:border-color 0.2s; }
+    .login-field label { display:block; font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem; font-weight:600; }
+    .login-field input { width:100%; background:var(--card); border:1px solid var(--border); color:var(--text); padding:0.75rem 1rem; border-radius:8px; font-family:var(--font-main); font-size:0.9rem; outline:none; transition:border-color 0.2s; }
     .login-field input:focus { border-color:var(--accent); }
-    .login-err { color:#f87171; font-size:0.85rem; margin-top:0.5rem; display:none; }
-    .btn-admin { background:var(--accent); color:#fff; border:none; padding:0.75rem 1.5rem; border-radius:8px; font-size:0.85rem; font-weight: 600; cursor:pointer; width:100%; margin-top:0.5rem; transition:all 0.2s; }
+    .login-err { color:#f87171; font-size:0.8rem; margin-top:0.5rem; display:none; }
+    .btn-admin { background:var(--accent); color:#fff; border:none; padding:0.75rem 1.5rem; border-radius:8px; font-family:var(--font-main); font-size:0.85rem; cursor:pointer; width:100%; margin-top:0.5rem; transition:all 0.2s; font-weight:600; }
     .btn-admin:hover { background:#3a7aee; }
 
     #admin-content { display:none; }
     .admin-tabs { display:flex; gap:0.5rem; margin-bottom:2rem; border-bottom:1px solid var(--border); }
-    .admin-tab { background:none; border:none; color:var(--muted); font-size:0.78rem; font-weight: 600; padding:0.6rem 1rem; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.2s; text-transform:uppercase; letter-spacing:0.04em; }
+    .admin-tab { background:none; border:none; color:var(--muted); font-family:var(--font-main); font-size:0.78rem; padding:0.6rem 1rem; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.2s; text-transform:uppercase; letter-spacing:0.06em; font-weight:600; }
     .admin-tab.active { color:var(--accent); border-bottom-color:var(--accent); }
     .admin-tab-pane { display:none; }
     .admin-tab-pane.active { display:block; }
 
     .admin-field { margin-bottom:1.1rem; }
-    .admin-field label { display:block; font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.35rem; font-weight: 600; }
-    .admin-field input, .admin-field textarea { width:100%; background:var(--card); border:1px solid var(--border); color:var(--text); padding:0.65rem 0.9rem; border-radius:8px; font-size:0.85rem; outline:none; transition:border-color 0.2s; resize:vertical; }
+    .admin-field label { display:block; font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.35rem; font-weight:600; }
+    .admin-field input, .admin-field textarea { width:100%; background:var(--card); border:1px solid var(--border); color:var(--text); padding:0.65rem 0.9rem; border-radius:8px; font-family:var(--font-main); font-size:0.85rem; outline:none; transition:border-color 0.2s; resize:vertical; }
     .admin-field input:focus, .admin-field textarea:focus { border-color:var(--accent); }
-    .admin-field textarea { min-height:80px; }
+    .admin-field textarea { min-height:60px; }
 
     .proj-block, .skill-block { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:1.25rem; margin-bottom:1rem; }
     .block-num { font-family:var(--font-display); font-weight:700; font-size:0.85rem; color:var(--accent); margin-bottom:0.75rem; }
 
-    .btn-save { background:var(--green); color:#0a0a0f; border:none; padding:0.8rem 2rem; border-radius:8px; font-size:0.85rem; font-weight:700; cursor:pointer; width:100%; margin-top:0.75rem; transition:all 0.2s; }
+    .btn-save { background:var(--green); color:#0a0a0f; border:none; padding:0.8rem 2rem; border-radius:8px; font-family:var(--font-main); font-size:0.85rem; font-weight:700; cursor:pointer; width:100%; margin-top:0.75rem; transition:all 0.2s; }
     .btn-save:hover { background:#2ebd86; }
-    .save-msg { text-align:center; font-size:0.85rem; color:var(--green); margin-top:0.6rem; display:none; }
+    .save-msg { text-align:center; font-size:0.8rem; color:var(--green); margin-top:0.6rem; display:none; }
 
     @media (max-width:768px) {
-      nav { padding:1rem 1.5rem; } .nav-links { display:none; }
+      nav { padding:1rem 1.5rem; flex-wrap:wrap; gap:1rem; }
+      .nav-center { display:none; }
+      .lang-toggle { padding:0.4rem 0.8rem; font-size:0.68rem; }
       #hero { padding:7rem 1.5rem 3rem; }
-      .hero-inner { grid-template-columns:1fr; } .hero-photo { display:none; }
+      .hero-inner { grid-template-columns:1fr; }
+      .hero-photo { display:none; }
       section { padding:4rem 1.5rem; }
       .drive-banner { flex-wrap:wrap; }
+      .whatsapp-float { bottom:5.5rem; right:1rem; font-size:0.7rem; padding:0.65rem 1rem; }
+      #admin-btn { left:1rem; font-size:0.65rem; padding:0.5rem 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="#hero" class="nav-logo">
-      <svg class="logo-pc" viewBox="0 0 48 38" xmlns="http://www.w3.org/2000/svg" fill="none">
-        <rect x="2" y="2" width="44" height="28" rx="3" stroke="url(#lg1)" stroke-width="2"/>
-        <rect x="6" y="6" width="36" height="20" rx="1.5" fill="url(#lg2)" opacity="0.15"/>
-        <rect class="scan-line" x="6" y="6" width="36" height="2" rx="1" fill="url(#lg1)" opacity="0.6"/>
-        <rect x="9" y="11" width="14" height="1.5" rx="0.75" fill="#4f8cff" opacity="0.8"/>
-        <rect x="9" y="15" width="20" height="1.5" rx="0.75" fill="#a78bfa" opacity="0.7"/>
-        <rect x="9" y="19" width="10" height="1.5" rx="0.75" fill="#4f8cff" opacity="0.6"/>
-        <rect class="cursor-blink" x="25" y="10.5" width="1.5" height="2.5" rx="0.5" fill="#89CFF0"/>
-        <rect x="21" y="30" width="6" height="4" rx="1" fill="url(#lg1)" opacity="0.8"/>
-        <rect x="14" y="34" width="20" height="2.5" rx="1.25" fill="url(#lg1)" opacity="0.8"/>
-        <defs>
-          <linearGradient id="lg1" x1="0" y1="0" x2="48" y2="38" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#4f8cff"/><stop offset="100%" stop-color="#a78bfa"/>
-          </linearGradient>
-          <linearGradient id="lg2" x1="0" y1="0" x2="44" y2="28" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#4f8cff"/><stop offset="100%" stop-color="#a78bfa"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <span class="logo-text">JM<span class="logo-dot">.</span>Nazareth</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#about">Sobre</a></li>
-      <li><a href="#quem-sou-eu">Quem sou Eu</a></li>
-      <li><a href="#education">Educação</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projetos</a></li>
-      <li><a href="#contact">Contacto</a></li>
-      <li><a href="https://www.linkedin.com/in/jo%C3%A3o-maria-nazareth-a82838401/" target="_blank" rel="noopener" style="color:#0A66C2;">LinkedIn ↗</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a href="#hero" class="nav-logo">
+    <svg class="logo-pc" viewBox="0 0 48 38" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <rect x="2" y="2" width="44" height="28" rx="3" stroke="url(#lg1)" stroke-width="2"/>
+      <rect x="6" y="6" width="36" height="20" rx="1.5" fill="url(#lg2)" opacity="0.15"/>
+      <rect class="scan-line" x="6" y="6" width="36" height="2" rx="1" fill="url(#lg1)" opacity="0.6"/>
+      <rect x="9" y="11" width="14" height="1.5" rx="0.75" fill="#4f8cff" opacity="0.8"/>
+      <rect x="9" y="15" width="20" height="1.5" rx="0.75" fill="#a78bfa" opacity="0.7"/>
+      <rect x="9" y="19" width="10" height="1.5" rx="0.75" fill="#4f8cff" opacity="0.6"/>
+      <rect class="cursor-blink" x="25" y="10.5" width="1.5" height="2.5" rx="0.5" fill="#89CFF0"/>
+      <rect x="21" y="30" width="6" height="4" rx="1" fill="url(#lg1)" opacity="0.8"/>
+      <rect x="14" y="34" width="20" height="2.5" rx="1.25" fill="url(#lg1)" opacity="0.8"/>
+      <defs>
+        <linearGradient id="lg1" x1="0" y1="0" x2="48" y2="38" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#4f8cff"/><stop offset="100%" stop-color="#a78bfa"/>
+        </linearGradient>
+        <linearGradient id="lg2" x1="0" y1="0" x2="44" y2="28" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#4f8cff"/><stop offset="100%" stop-color="#a78bfa"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <span class="logo-text">JM<span class="logo-dot">.</span>Nazareth</span>
+  </a>
+  <ul class="nav-center">
+    <li><a href="#about" data-pt="Sobre" data-en="About">Sobre</a></li>
+    <li><a href="#quem-sou-eu" data-pt="Quem sou Eu" data-en="About Me">Quem sou Eu</a></li>
+    <li><a href="#education" data-pt="Educação" data-en="Education">Educação</a></li>
+    <li><a href="#skills" data-pt="Skills" data-en="Skills">Skills</a></li>
+    <li><a href="#projects" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+    <li><a href="#contact" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+    <li><a href="https://www.linkedin.com/in/jo%C3%A3o-maria-nazareth-a82838401/" target="_blank" rel="noopener" style="color:#0A66C2;">LinkedIn ↗</a></li>
+  </ul>
+  <button class="lang-toggle" onclick="toggleLanguage()" id="lang-btn" data-pt="🌐 EN" data-en="🌐 PT">🌐 EN</button>
+</nav>
 
-  <div id="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-glow2"></div>
-    <div class="hero-inner">
-      <div>
-        <div class="hero-eyebrow fade-in">Disponível para oportunidades</div>
-        <h1 class="fade-in">João<br/><span class="accent">Maria</span><br/><span class="accent2">Nazareth</span></h1>
-        <p class="hero-desc fade-in">Estudante de Engenharia Informática no IPB · ESTIG.<br/>Apaixonado por desenvolvimento web, programação e criação digital.</p>
-        <div class="hero-badges fade-in">
-          <span class="badge active">🎓 IPB · ESTIG</span>
-          <span class="badge">🌍 Erasmus+ Berlin</span>
-          <span class="badge">🇵🇹 Porto, Portugal</span>
-        </div>
-        <div class="hero-cta fade-in">
-          <a href="#contact" class="btn btn-primary">✉ Contacto</a>
-          <a href="#projects" class="btn btn-ghost">💼 Os meus projetos</a>
-          <a href="#education" class="btn btn-ghost">Ver CV ↓</a>
-        </div>
+<div id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow fade-in" data-pt="Disponível para oportunidades" data-en="Available for opportunities">Disponível para oportunidades</div>
+      <h1 class="fade-in">João<br/><span class="accent">Maria</span><br/><span class="accent2">Nazareth</span></h1>
+      <p class="hero-desc fade-in" data-pt="Estudante de Engenharia Informática no IPB · ESTIG. Apaixonado por desenvolvimento web, programação e criação digital." data-en="Computer Science student at IPB · ESTIG. Passionate about web development, programming and digital creation.">Estudante de Engenharia Informática no IPB · ESTIG.<br/>Apaixonado por desenvolvimento web, programação e criação digital.</p>
+      <div class="hero-badges fade-in">
+        <span class="badge active" data-pt="🎓 IPB · ESTIG" data-en="🎓 IPB · ESTIG">🎓 IPB · ESTIG</span>
+        <span class="badge" data-pt="🌍 Erasmus+ Berlin" data-en="🌍 Erasmus+ Berlin">🌍 Erasmus+ Berlin</span>
+        <span class="badge" data-pt="🇵🇹 Porto, Portugal" data-en="🇵🇹 Porto, Portugal">🇵🇹 Porto, Portugal</span>
       </div>
-      <div class="hero-photo fade-in">
-        <div class="photo-frame">
-          <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;align-items:center;justify-content:center;font-size:4rem;">👤</div>
-        </div>
-        <div class="photo-decoration"></div>
+      <div class="hero-cta fade-in">
+        <a href="#contact" class="btn btn-primary" data-pt="✉ Contacto" data-en="✉ Contact">✉ Contacto</a>
+        <a href="#projects" class="btn btn-ghost" data-pt="💼 Os meus projetos" data-en="💼 My projects">💼 Os meus projetos</a>
+        <a href="#education" class="btn btn-ghost" data-pt="Ver CV ↓" data-en="View CV ↓">Ver CV ↓</a>
+      </div>
+    </div>
+    <div class="hero-photo fade-in">
+      <div class="photo-frame">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;align-items:center;justify-content:center;font-size:4rem;">👤</div>
+      </div>
+      <div class="photo-decoration"></div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-label" data-pt="Estado atual" data-en="Current Status">Estado atual</div>
+  <h2 data-pt="Atualmente" data-en="Currently">Atualmente</h2>
+  <div class="currently-card">
+    <div class="status-dot"></div>
+    <div class="currently-text">
+      <strong data-pt="Engenharia Informática — IPB · ESTIG" data-en="Computer Science — IPB · ESTIG">Engenharia Informática — IPB · ESTIG</strong>
+      <span data-pt="Instituto Politécnico de Bragança · Escola Superior de Tecnologia e Gestão | 2024 – presente" data-en="Polytechnic Institute of Bragança · Higher School of Technology and Management | 2024 – present">Instituto Politécnico de Bragança · Escola Superior de Tecnologia e Gestão &nbsp;|&nbsp; 2024 – presente</span>
+    </div>
+  </div>
+</section>
+
+<section id="quem-sou-eu">
+  <div class="section-label" data-pt="Apresentação" data-en="About">Apresentação</div>
+  <h2><span data-pt="Quem sou " data-en="Who am ">Quem sou </span><span style="color:#89CFF0;" data-pt="Eu" data-en="I">Eu</span>?</h2>
+  <div class="about-card">
+    <p class="about-text" id="bio-text"></p>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-label" data-pt="Percurso académico" data-en="Academic Path">Percurso académico</div>
+  <h2 data-pt="Educação &amp; Experiência" data-en="Education &amp; Experience">Educação & Experiência</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot">🎓</div>
+      <div class="timeline-card">
+        <div class="timeline-header"><div class="timeline-title" data-pt="Engenharia Informática" data-en="Computer Science">Engenharia Informática</div><div class="timeline-year">2024 – presente</div></div>
+        <div class="timeline-org" data-pt="Instituto Politécnico de Bragança · ESTIG" data-en="Polytechnic Institute of Bragança · ESTIG">Instituto Politécnico de Bragança · ESTIG</div>
+        <div class="timeline-body" data-pt="Licenciatura em Engenharia Informática. Formação em sistemas computacionais, programação, redes e desenvolvimento de software." data-en="Bachelor's degree in Computer Science. Training in computational systems, programming, networks and software development.">Licenciatura em Engenharia Informática. Formação em sistemas computacionais, programação, redes e desenvolvimento de software.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🌍</div>
+      <div class="timeline-card">
+        <div class="timeline-header"><div class="timeline-title" data-pt="Estágio Curricular — VAIS CONCEPTS" data-en="Internship — VAIS CONCEPTS">Estágio Curricular — VAIS CONCEPTS</div><div class="timeline-year">Erasmus+ · 2023</div></div>
+        <div class="timeline-org" data-pt="Berlim, Alemanha · 400 horas" data-en="Berlin, Germany · 400 hours">Berlim, Alemanha · 400 horas</div>
+        <div class="timeline-body" data-pt="Criação de websites, design de imagens e banners com Adobe Cloud, reparação de hardware e venda de equipamentos a clientes." data-en="Website creation, image and banner design with Adobe Cloud, hardware repair and equipment sales to clients.">Criação de websites, design de imagens e banners com Adobe Cloud, reparação de hardware e venda de equipamentos a clientes.</div>
+        <div class="grade-badge">★ Nota: 20 / 20</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">💻</div>
+      <div class="timeline-card">
+        <div class="timeline-header"><div class="timeline-title" data-pt="Estágio Curricular — Bitcare IT" data-en="Internship — Bitcare IT">Estágio Curricular — Bitcare IT</div><div class="timeline-year">2022 · 200 horas</div></div>
+        <div class="timeline-org" data-pt="Bitcare — Information Technologies, S.A · Porto" data-en="Bitcare — Information Technologies, S.A · Porto">Bitcare — Information Technologies, S.A · Porto</div>
+        <div class="timeline-body" data-pt="Reparação e limpeza de equipamentos a nível de hardware e software, organização de inventário, instalação e preparação de equipamentos para clientes." data-en="Equipment repair and cleaning at hardware and software level, inventory organization, installation and preparation of equipment for clients.">Reparação e limpeza de equipamentos a nível de hardware e software, organização de inventário, instalação e preparação de equipamentos para clientes.</div>
+        <div class="grade-badge">★ Nota: 19.7 / 20</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🏫</div>
+      <div class="timeline-card">
+        <div class="timeline-header"><div class="timeline-title" data-pt="Curso Técnico — Gestão e Programação de SI" data-en="Technical Course — IT Management and Programming">Curso Técnico — Gestão e Programação de SI</div><div class="timeline-year">2020 – 2023</div></div>
+        <div class="timeline-org" data-pt="Agrupamento de Escolas Fontes Pereira de Melo · Porto" data-en="Fontes Pereira de Melo School Group · Porto">Agrupamento de Escolas Fontes Pereira de Melo · Porto</div>
+        <div class="timeline-body" data-pt="Formação técnica em gestão e programação de sistemas informáticos." data-en="Technical training in IT management and programming.">Formação técnica em gestão e programação de sistemas informáticos.</div>
+        <div class="grade-badge">★ Média final: 14.8</div>
       </div>
     </div>
   </div>
+</section>
 
-  <section id="about">
-    <div class="section-label">Estado atual</div>
-    <h2>Atualmente</h2>
-    <div class="currently-card">
-      <div class="status-dot"></div>
-      <div class="currently-text">
-        <strong>Engenharia Informática — IPB · ESTIG</strong>
-        <span>Instituto Politécnico de Bragança · Escola Superior de Tecnologia e Gestão &nbsp;|&nbsp; 2024 – presente</span>
-      </div>
-    </div>
-  </section>
+<section id="skills">
+  <div class="section-label" data-pt="Competências técnicas" data-en="Technical Skills">Competências técnicas</div>
+  <h2 data-pt="Skills" data-en="Skills">Skills</h2>
+  <div class="skills-grid" id="skills-grid"></div>
+</section>
 
-  <section id="quem-sou-eu">
-    <div class="section-label">Apresentação</div>
-    <h2>Quem sou <span style="color:#89CFF0;">Eu</span>?</h2>
-    <div class="about-card">
-      <p class="about-text" id="bio-text"></p>
-    </div>
-  </section>
+<section>
+  <div class="section-label" data-pt="Comunicação" data-en="Communication">Comunicação</div>
+  <h2 data-pt="Idiomas" data-en="Languages">Idiomas</h2>
+  <div class="lang-grid">
+    <div class="lang-card"><div class="lang-flag">🇵🇹</div><div class="lang-name">Português</div><div class="lang-level" data-pt="Língua Nativa" data-en="Native Language">Língua Nativa</div></div>
+    <div class="lang-card"><div class="lang-flag">🇬🇧</div><div class="lang-name">English</div><div class="lang-level">B2 — Upper-Intermediate</div></div>
+  </div>
+</section>
 
-  <section id="education">
-    <div class="section-label">Percurso académico</div>
-    <h2>Educação & Experiência</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot">🎓</div>
-        <div class="timeline-card">
-          <div class="timeline-header"><div class="timeline-title">Engenharia Informática</div><div class="timeline-year">2024 – presente</div></div>
-          <div class="timeline-org">Instituto Politécnico de Bragança · ESTIG</div>
-          <div class="timeline-body">Licenciatura em Engenharia Informática. Formação em sistemas computacionais, programação, redes e desenvolvimento de software.</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot">🌍</div>
-        <div class="timeline-card">
-          <div class="timeline-header"><div class="timeline-title">Estágio Curricular — VAIS CONCEPTS</div><div class="timeline-year">Erasmus+ · 2023</div></div>
-          <div class="timeline-org">Berlim, Alemanha · 400 horas</div>
-          <div class="timeline-body">Criação de websites, design de imagens e banners com Adobe Cloud, reparação de hardware e venda de equipamentos a clientes.</div>
-          <div class="grade-badge">★ Nota: 20 / 20</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot">💻</div>
-        <div class="timeline-card">
-          <div class="timeline-header"><div class="timeline-title">Estágio Curricular — Bitcare IT</div><div class="timeline-year">2022 · 200 horas</div></div>
-          <div class="timeline-org">Bitcare — Information Technologies, S.A · Porto</div>
-          <div class="timeline-body">Reparação e limpeza de equipamentos a nível de hardware e software, organização de inventário, instalação e preparação de equipamentos para clientes.</div>
-          <div class="grade-badge">★ Nota: 19.7 / 20</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot">🏫</div>
-        <div class="timeline-card">
-          <div class="timeline-header"><div class="timeline-title">Curso Técnico — Gestão e Programação de SI</div><div class="timeline-year">2020 – 2023</div></div>
-          <div class="timeline-org">Agrupamento de Escolas Fontes Pereira de Melo · Porto</div>
-          <div class="timeline-body">Formação técnica em gestão e programação de sistemas informáticos.</div>
-          <div class="grade-badge">★ Média final: 14.8</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section>
+  <div class="section-label" data-pt="Pessoal" data-en="Personal">Pessoal</div>
+  <h2 data-pt="Interesses" data-en="Interests">Interesses</h2>
+  <div class="hobbies-row">
+    <div class="hobby-pill" data-pt="🎮 Videojogos" data-en="🎮 Video games">🎮 Videojogos</div>
+    <div class="hobby-pill" data-pt="📷 Fotografia" data-en="📷 Photography">📷 Fotografia</div>
+    <div class="hobby-pill" data-pt="🖼 Museus &amp; Galerias de Arte" data-en="🖼 Museums &amp; Art Galleries">🖼 Museus & Galerias de Arte</div>
+    <div class="hobby-pill" data-pt="🔧 Reparações &amp; Upgrades de Hardware" data-en="🔧 Hardware Repairs &amp; Upgrades">🔧 Reparações & Upgrades de Hardware</div>
+  </div>
+</section>
 
-  <section id="skills">
-    <div class="section-label">Competências técnicas</div>
-    <h2>Skills</h2>
-    <div class="skills-grid" id="skills-grid"></div>
-  </section>
-
-  <section>
-    <div class="section-label">Comunicação</div>
-    <h2>Idiomas</h2>
-    <div class="lang-grid">
-      <div class="lang-card"><div class="lang-flag">🇵🇹</div><div class="lang-name">Português</div><div class="lang-level">Língua Nativa</div></div>
-      <div class="lang-card"><div class="lang-flag">🇬🇧</div><div class="lang-name">Inglês</div><div class="lang-level">B2 — Upper-Intermediate</div></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-label">Pessoal</div>
-    <h2>Interesses</h2>
-    <div class="hobbies-row">
-      <div class="hobby-pill">🎮 Videojogos</div>
-      <div class="hobby-pill">📷 Fotografia</div>
-      <div class="hobby-pill">🖼 Museus & Galerias de Arte</div>
-      <div class="hobby-pill">🔧 Reparações & Upgrades de Hardware</div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="section-label">Trabalhos & Projetos</div>
-    <h2>Os meus Projetos</h2>
-<a href="https://github.com/JonnySuede28/my-projects-archive" target="_blank" rel="noopener" class="contact-card">
-  <div class="contact-icon" style="background:rgba(255,255,255,0.1);">
+<section id="projects">
+  <div class="section-label" data-pt="Trabalhos &amp; Projetos" data-en="Work &amp; Projects">Trabalhos & Projetos</div>
+  <h2 data-pt="Os meus Projetos" data-en="My Projects">Os meus Projetos</h2>
+  <a href="https://github.com/JonnySuede28/my-projects-archive" target="_blank" rel="noopener" class="contact-card">
+   <div class="contact-icon" style="background:rgba(255,255,255,0.1);">
     <svg viewBox="0 0 24 24" fill="#fff" style="width:20px;height:20px;">
       <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57V20.82c-3.33.72-4.035-1.605-4.035-1.605-.545-1.385-1.335-1.755-1.335-1.755-1.087-.745.083-.727.083-.727 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.805 1.305 3.495.997.108-.775.418-1.305.76-1.605-2.665-.305-5.467-1.335-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.22 0 4.61-2.805 5.62-5.475 5.92.43.37.81 1.1.81 2.22v3.285c0 .315.225.683.832.565C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z"/>
     </svg>
   </div>
-  <div><div class="contact-label">GitHub</div><div class="contact-value">Projetos meus ao longo dos anos</div></div>
-</a>
-    <div class="projects-grid" id="projects-grid"></div>
-  </section>
-
-  <section id="contact">
-    <div class="section-label">Vamos falar</div>
-    <h2>Contacto</h2>
-    <div class="contact-grid">
-      <a href="mailto:joaomarianazareth@gmail.com" class="contact-card">
-        <div class="contact-icon">✉️</div>
-        <div><div class="contact-label">Email</div><div class="contact-value">joaomarianazareth@gmail.com</div></div>
-      </a>
-      <a href="tel:+351911938770" class="contact-card">
-        <div class="contact-icon">📞</div>
-        <div><div class="contact-label">Telemóvel</div><div class="contact-value">+351 911 938 770</div></div>
-      </a>
-      <a href="https://www.linkedin.com/in/jo%C3%A3o-maria-nazareth-a82838401/" target="_blank" rel="noopener" class="contact-card">
-        <div class="contact-icon" style="background:rgba(10,102,194,0.15);">
-          <svg viewBox="0 0 24 24" fill="#0A66C2" style="width:20px;height:20px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </div>
-        <div><div class="contact-label">LinkedIn</div><div class="contact-value">João Maria Nazareth</div></div>
-      </a>
-      <a href="https://wa.me/351911938770" target="_blank" rel="noopener" class="contact-card" style="justify-content:center;">
-        <div class="contact-icon" style="background:rgba(37,211,102,0.12);width:52px;height:52px;">
-          <svg viewBox="0 0 24 24" fill="#25D366" style="width:26px;height:26px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </div>
-      </a>
+      <strong data-pt="GitHub — Todos os meus trabalhos" data-en="GitHub — All my work">GitHub — Todos os meus trabalhos</strong>
+      <span data-pt="Acede à pasta com todos os ficheiros, projetos e trabalhos ao longo dos anos" data-en="Access the folder with all files, projects and work over the years">Acede à pasta com todos os ficheiros, projetos e trabalhos ao longo dos anos</span>
     </div>
-  </section>
-
-  <footer>
-    <p>Desenvolvido por <span>João Maria Nazareth</span> · 2026 · Porto, Portugal</p>
-  </footer>
-
-  <a href="https://wa.me/351911938770" target="_blank" rel="noopener" class="whatsapp-float">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Fala comigo
+    <div class="drive-arrow">↗</div>
   </a>
+  <div class="projects-grid" id="projects-grid"></div>
+</section>
 
-  <button id="admin-btn" onclick="openAdmin()">⚙ Admin</button>
+<section id="contact">
+  <div class="section-label" data-pt="Vamos falar" data-en="Get in touch">Vamos falar</div>
+  <h2 data-pt="Contacto" data-en="Contact">Contacto</h2>
+  <div class="contact-grid">
+    <a href="mailto:joaomarianazareth@gmail.com" class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div><div class="contact-label" data-pt="Email" data-en="Email">Email</div><div class="contact-value">joaomarianazareth@gmail.com</div></div>
+    </a>
+    <a href="tel:+351911938770" class="contact-card">
+      <div class="contact-icon">📞</div>
+      <div><div class="contact-label" data-pt="Telemóvel" data-en="Phone">Telemóvel</div><div class="contact-value">+351 911 938 770</div></div>
+    </a>
+    <a href="https://www.linkedin.com/in/jo%C3%A3o-maria-nazareth-a82838401/" target="_blank" rel="noopener" class="contact-card">
+      <div class="contact-icon" style="background:rgba(10,102,194,0.15);">
+        <svg viewBox="0 0 24 24" fill="#0A66C2" style="width:20px;height:20px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </div>
+      <div><div class="contact-label" data-pt="LinkedIn" data-en="LinkedIn">LinkedIn</div><div class="contact-value">João Maria Nazareth</div></div>
+    </a>
+    <a href="https://wa.me/351911938770" target="_blank" rel="noopener" class="contact-card" style="justify-content:center;">
+      <div class="contact-icon" style="background:rgba(37,211,102,0.12);width:52px;height:52px;">
+        <svg viewBox="0 0 24 24" fill="#25D366" style="width:26px;height:26px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+    </a>
+  </div>
+</section>
 
-  <div id="admin-overlay">
-    <div id="admin-panel">
-      <button class="admin-close" onclick="closeAdmin()">✕</button>
-      <h3>⚙ Painel de Admin</h3>
-      <p class="admin-sub">Edita o teu portfólio sem sair do site</p>
+<footer>
+  <p data-pt="Desenvolvido por João Maria Nazareth · 2026 · Porto, Portugal" data-en="Developed by João Maria Nazareth · 2026 · Porto, Portugal">Desenvolvido por <span>João Maria Nazareth</span> · 2026 · Porto, Portugal</p>
+</footer>
 
-      <div id="admin-login">
-        <div class="login-field">
-          <label>Password</label>
-          <input type="password" id="admin-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkLogin()"/>
-        </div>
-        <p class="login-err" id="login-err">❌ Password incorreta. Tenta novamente.</p>
-        <button class="btn-admin" onclick="checkLogin()">Entrar →</button>
+<a href="https://wa.me/351911938770" target="_blank" rel="noopener" class="whatsapp-float">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span data-pt="Fala comigo" data-en="Talk to me">Fala comigo</span>
+</a>
+
+<button id="admin-btn" onclick="openAdmin()" data-pt="⚙ Admin" data-en="⚙ Admin">⚙ Admin</button>
+
+<div id="admin-overlay">
+  <div id="admin-panel">
+    <button class="admin-close" onclick="closeAdmin()">✕</button>
+    <h3>⚙ Painel de Admin</h3>
+    <p class="admin-sub" data-pt="Edita o teu portfólio sem sair do site" data-en="Edit your portfolio without leaving the site">Edita o teu portfólio sem sair do site</p>
+
+    <div id="admin-login">
+      <div class="login-field">
+        <label data-pt="Password" data-en="Password">Password</label>
+        <input type="password" id="admin-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkLogin()"/>
+      </div>
+      <p class="login-err" id="login-err" data-pt="❌ Password incorreta. Tenta novamente." data-en="❌ Incorrect password. Try again.">❌ Password incorreta. Tenta novamente.</p>
+      <button class="btn-admin" onclick="checkLogin()" data-pt="Entrar →" data-en="Login →">Entrar →</button>
+    </div>
+
+    <div id="admin-content">
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchTab('tab-bio',this)">📝 Bio</button>
+        <button class="admin-tab" onclick="switchTab('tab-projects',this)">💼 Projetos</button>
+        <button class="admin-tab" onclick="switchTab('tab-skills',this)">🛠 Skills</button>
       </div>
 
-      <div id="admin-content">
-        <div class="admin-tabs">
-          <button class="admin-tab active" onclick="switchTab('tab-bio',this)">📝 Bio</button>
-          <button class="admin-tab" onclick="switchTab('tab-projects',this)">💼 Projetos</button>
-          <button class="admin-tab" onclick="switchTab('tab-skills',this)">🛠 Skills</button>
+      <div class="admin-tab-pane active" id="tab-bio">
+        <div class="admin-field">
+          <label>Português</label>
+          <textarea id="edit-bio-pt" rows="5" placeholder="Português..."></textarea>
         </div>
+        <div class="admin-field">
+          <label>English</label>
+          <textarea id="edit-bio-en" rows="5" placeholder="English..."></textarea>
+        </div>
+        <button class="btn-save" onclick="saveBio()">💾 Guardar Bio</button>
+        <p class="save-msg" id="msg-bio">✓ Bio atualizada!</p>
+      </div>
 
-        <div class="admin-tab-pane active" id="tab-bio">
-          <div class="admin-field">
-            <label>Texto "Quem sou Eu?"</label>
-            <textarea id="edit-bio" rows="6"></textarea>
-          </div>
-          <button class="btn-save" onclick="saveBio()">💾 Guardar Bio</button>
-          <p class="save-msg" id="msg-bio">✓ Bio atualizada com sucesso!</p>
-        </div>
+      <div class="admin-tab-pane" id="tab-projects">
+        <div id="proj-list"></div>
+        <button class="btn-save" onclick="saveProjects()">💾 Guardar Projetos</button>
+        <p class="save-msg" id="msg-proj">✓ Projetos atualizados!</p>
+      </div>
 
-        <div class="admin-tab-pane" id="tab-projects">
-          <div id="proj-list"></div>
-          <button class="btn-save" onclick="saveProjects()">💾 Guardar Projetos</button>
-          <p class="save-msg" id="msg-proj">✓ Projetos atualizados!</p>
-        </div>
-
-        <div class="admin-tab-pane" id="tab-skills">
-          <div id="skill-list"></div>
-          <button class="btn-save" onclick="saveSkills()">💾 Guardar Skills</button>
-          <p class="save-msg" id="msg-skill">✓ Skills atualizadas!</p>
-        </div>
+      <div class="admin-tab-pane" id="tab-skills">
+        <div id="skill-list"></div>
+        <button class="btn-save" onclick="saveSkills()">💾 Guardar Skills</button>
+        <p class="save-msg" id="msg-skill">✓ Skills atualizadas!</p>
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-    const PWD = 'joao2025';
+<script>
+const PWD = 'joao2025';
+let language = localStorage.getItem('portfolio-lang') || 'pt';
 
-    const defaults = {
-      bio: 'Sou o João Maria, tesssssnho 23 anos e sou do Porto. Estudo Engenharia Informática no IPB · ESTIG (Bragança) e tenho experiência em desenvolvimento web, reparação de hardware e design digital. Fiz um Erasmus+ em Berlim e sou apaixonado por tecnologia, fotografia e videojogos.',
-      projects: [
-        
-      ],
-      skills: [
-        { icon:'🌐', name:'Web Development', tags:'HTML5, CSS, PHP, SQL' },
-        { icon:'⚙️', name:'Programação OOP', tags:'C, C++' },
-        { icon:'🎨', name:'Design & Criação', tags:'Photoshop, Adobe Cloud, Banners' },
-        { icon:'🔧', name:'Hardware & IT', tags:'Reparação, Manutenção, Inventário' }
-      ]
-    };
+const defaults = {
+  bio: {
+    pt: 'Sou o João Maria, tenho 23 anos e sou de Porto. Estudo Engenharia Informática no IPB · ESTIG (Bragança) e tenho experiência em desenvolvimento web, reparação de hardware e design digital. Fiz um Erasmus+ em Berlim e sou apaixonado por tecnologia, fotografia e videojogos.',
+    en: 'I\'m João Maria, I\'m 23 years old and from Porto. I study Computer Science at IPB · ESTIG (Bragança) and have experience in web development, hardware repair and digital design. I did an Erasmus+ in Berlin and I\'m passionate about technology, photography and video games.'
+  },
+  projects: [
+     ],
+  skills: [
+    { icon:'🌐', name: {pt:'Web Development', en:'Web Development'}, tags:'HTML5, CSS, PHP, SQL' },
+    { icon:'⚙️', name: {pt:'Programação OOP', en:'OOP Programming'}, tags:'C, C++' },
+    { icon:'🎨', name: {pt:'Design & Criação', en:'Design & Creation'}, tags:'Photoshop, Adobe Cloud, Banners' },
+    { icon:'🔧', name: {pt:'Hardware & IT', en:'Hardware & IT'}, tags:'Reparação/Repair, Manutenção/Maintenance, Inventário/Inventory' }
+  ]
+};
 
-    let data;
-    try { data = JSON.parse(localStorage.getItem('portfolio-data')) || defaults; }
-    catch(e) { data = defaults; }
+let data;
+try  {
+  const stored = JSON.parse(localStorage.getItem('portfolio-data'));
+  data = {
+    bio: stored?.bio || defaults.bio,
+    projects: stored?.projects || defaults.projects,
+    skills: stored?.skills?.length ? stored.skills : defaults.skills
+  };
+} catch(e) {
+  data = defaults;
+}
+data.skills = data.skills.map(s => ({
+  ...s,
+  name: typeof s.name === 'string'
+    ? { pt: s.name, en: s.name }
+    : s.name
+}));
 
-    function persist() { localStorage.setItem('portfolio-data', JSON.stringify(data)); }
+function persist() { localStorage.setItem('portfolio-data', JSON.stringify(data)); }
 
-    // ─── RENDER ───
-    function renderBio() {
-      document.getElementById('bio-text').textContent = data.bio;
-    }
-    function renderProjects() {
-      document.getElementById('projects-grid').innerHTML = data.projects.map(p => `
-        <div class="project-card">
-          <div class="project-top">
-            <div class="project-icon">${p.icon}</div>
-            <div class="project-links">
-              <a href="${p.link}" ${p.link!=='#'?'target="_blank" rel="noopener"':''} class="project-link">↗</a>
-            </div>
-          </div>
-          <div class="project-title">${p.title}</div>
-          <div class="project-desc">${p.desc}</div>
-          <div class="skill-tags" style="margin-top:1rem;">
-            ${p.tags.split(',').map(t=>`<span class="skill-tag">${t.trim()}</span>`).join('')}
-          </div>
-        </div>`).join('');
-    }
-    function renderSkills() {
-      document.getElementById('skills-grid').innerHTML = data.skills.map(s => `
-        <div class="skill-card">
-          <div class="skill-icon">${s.icon}</div>
-          <div class="skill-name">${s.name}</div>
-          <div class="skill-tags">
-            ${s.tags.split(',').map(t=>`<span class="skill-tag">${t.trim()}</span>`).join('')}
-          </div>
-        </div>`).join('');
-    }
-    function renderAll() { renderBio(); renderProjects(); renderSkills(); }
+function toggleLanguage() {
+  language = language === 'pt' ? 'en' : 'pt';
+  localStorage.setItem('portfolio-lang', language);
+  updateAllText();
+}
 
-    // ─── ADMIN ───
-    function openAdmin() { document.getElementById('admin-overlay').classList.add('open'); }
-    function closeAdmin() {
-      document.getElementById('admin-overlay').classList.remove('open');
-      document.getElementById('admin-pass').value = '';
-      document.getElementById('login-err').style.display = 'none';
-      document.getElementById('admin-login').style.display = '';
-      document.getElementById('admin-content').style.display = 'none';
-    }
-    document.getElementById('admin-overlay').addEventListener('click', e => { if(e.target===e.currentTarget) closeAdmin(); });
+function updateAllText() {
+  const btn = document.getElementById('lang-btn');
+  const newLang = language === 'pt' ? 'en' : 'pt';
+  const newText = btn.getAttribute('data-' + newLang);
+  btn.textContent = newText;
 
-    function checkLogin() {
-      if (document.getElementById('admin-pass').value === PWD) {
-        document.getElementById('admin-login').style.display = 'none';
-        document.getElementById('admin-content').style.display = 'block';
-        loadForms();
-      } else {
-        document.getElementById('login-err').style.display = 'block';
-      }
-    }
+  document.querySelectorAll('[data-pt][data-en]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + language);
+  });
 
-    function switchTab(id, btn) {
-      document.querySelectorAll('.admin-tab-pane').forEach(p=>p.classList.remove('active'));
-      document.querySelectorAll('.admin-tab').forEach(b=>b.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      btn.classList.add('active');
-    }
+  renderAll();
+}
 
-    function loadForms() {
-      document.getElementById('edit-bio').value = data.bio;
+function renderBio() { document.getElementById('bio-text').textContent = data.bio[language]; }
+function renderProjects() {
+  document.getElementById('projects-grid').innerHTML = data.projects.map(p => `
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon">${p.icon}</div>
+        <div class="project-links">
+          <a href="${p.link}" ${p.link!=='#'?'target="_blank" rel="noopener"':''} class="project-link">↗</a>
+        </div>
+      </div>
+      <div class="project-title">${p.title[language] || p.title}</div>
+      <div class="project-desc">${p.desc[language] || p.desc}</div>
+      <div class="skill-tags" style="margin-top:1rem;">
+        ${p.tags.split(',').map(t=>`<span class="skill-tag">${t.trim()}</span>`).join('')}
+      </div>
+    </div>`).join('');
+}
+function renderSkills() {
+  document.getElementById('skills-grid').innerHTML = data.skills.map(s => `
+    <div class="skill-card">
+      <div class="skill-icon">${s.icon}</div>
+      <div class="skill-name">${s.name[language] || s.name}</div>
+      <div class="skill-tags">
+        ${s.tags.split(',').map(t=>`<span class="skill-tag">${t.trim()}</span>`).join('')}
+      </div>
+    </div>`).join('');
+}
+function renderAll() { renderBio(); renderProjects(); renderSkills(); }
 
-      document.getElementById('proj-list').innerHTML = data.projects.map((p,i) => `
-        <div class="proj-block">
-          <div class="block-num">Projeto ${i+1}</div>
-          <div class="admin-field"><label>Ícone (emoji)</label><input id="pi-${i}" value="${p.icon}"/></div>
-          <div class="admin-field"><label>Título</label><input id="pt-${i}" value="${p.title}"/></div>
-          <div class="admin-field"><label>Descrição</label><textarea id="pd-${i}">${p.desc}</textarea></div>
-          <div class="admin-field"><label>Link (URL ou # se ainda não tiver)</label><input id="pl-${i}" value="${p.link}"/></div>
-          <div class="admin-field"><label>Tags (separadas por vírgula)</label><input id="pg-${i}" value="${p.tags}"/></div>
-        </div>`).join('');
+function openAdmin() { document.getElementById('admin-overlay').classList.add('open'); }
+function closeAdmin() {
+  document.getElementById('admin-overlay').classList.remove('open');
+  document.getElementById('admin-pass').value = '';
+  document.getElementById('login-err').style.display = 'none';
+  document.getElementById('admin-login').style.display = '';
+  document.getElementById('admin-content').style.display = 'none';
+}
+document.getElementById('admin-overlay').addEventListener('click', e => { if(e.target===e.currentTarget) closeAdmin(); });
 
-      document.getElementById('skill-list').innerHTML = data.skills.map((s,i) => `
-        <div class="skill-block">
-          <div class="block-num">Skill ${i+1}</div>
-          <div class="admin-field"><label>Ícone (emoji)</label><input id="si-${i}" value="${s.icon}"/></div>
-          <div class="admin-field"><label>Nome</label><input id="sn-${i}" value="${s.name}"/></div>
-          <div class="admin-field"><label>Tags (separadas por vírgula)</label><input id="st-${i}" value="${s.tags}"/></div>
-        </div>`).join('');
-    }
+function checkLogin() {
+  if (document.getElementById('admin-pass').value === PWD) {
+    document.getElementById('admin-login').style.display = 'none';
+    document.getElementById('admin-content').style.display = 'block';
+    loadForms();
+  } else {
+    document.getElementById('login-err').style.display = 'block';
+  }
+}
 
-    function saveBio() {
-      data.bio = document.getElementById('edit-bio').value;
-      persist(); renderBio(); flash('msg-bio');
-    }
-    function saveProjects() {
-      data.projects = data.projects.map((_,i) => ({
-        icon: document.getElementById(`pi-${i}`).value,
-        title: document.getElementById(`pt-${i}`).value,
-        desc: document.getElementById(`pd-${i}`).value,
-        link: document.getElementById(`pl-${i}`).value,
-        tags: document.getElementById(`pg-${i}`).value
-      }));
-      persist(); renderProjects(); flash('msg-proj');
-    }
-    function saveSkills() {
-      data.skills = data.skills.map((_,i) => ({
-        icon: document.getElementById(`si-${i}`).value,
-        name: document.getElementById(`sn-${i}`).value,
-        tags: document.getElementById(`st-${i}`).value
-      }));
-      persist(); renderSkills(); flash('msg-skill');
-    }
-    function flash(id) {
-      const el = document.getElementById(id);
-      el.style.display = 'block';
-      setTimeout(() => el.style.display = 'none', 2500);
-    }
+function switchTab(id, btn) {
+  document.querySelectorAll('.admin-tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.admin-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
 
-    renderAll();
-  </script>
+function loadForms() {
+  document.getElementById('edit-bio-pt').value = data.bio.pt || '';
+  document.getElementById('edit-bio-en').value = data.bio.en || '';
+
+  document.getElementById('proj-list').innerHTML = data.projects.map((p,i) => `
+    <div class="proj-block">
+      <div class="block-num">Projeto ${i+1}</div>
+      <div class="admin-field"><label>Ícone</label><input id="pi-${i}" value="${p.icon}"/></div>
+      <div class="admin-field"><label>Título PT</label><input id="pt-pt-${i}" value="${p.title.pt || ''}"/></div>
+      <div class="admin-field"><label>Título EN</label><input id="pt-en-${i}" value="${p.title.en || ''}"/></div>
+      <div class="admin-field"><label>Descrição PT</label><textarea id="pd-pt-${i}">${p.desc.pt || ''}</textarea></div>
+      <div class="admin-field"><label>Descrição EN</label><textarea id="pd-en-${i}">${p.desc.en || ''}</textarea></div>
+      <div class="admin-field"><label>Link</label><input id="pl-${i}" value="${p.link}"/></div>
+      <div class="admin-field"><label>Tags</label><input id="pg-${i}" value="${p.tags}"/></div>
+    </div>`).join('');
+
+  document.getElementById('skill-list').innerHTML = data.skills.map((s,i) => `
+    <div class="skill-block">
+      <div class="block-num">Skill ${i+1}</div>
+      <div class="admin-field"><label>Ícone</label><input id="si-${i}" value="${s.icon}"/></div>
+      <div class="admin-field"><label>Nome PT</label><input id="sn-pt-${i}" value="${s.name.pt || ''}"/></div>
+      <div class="admin-field"><label>Nome EN</label><input id="sn-en-${i}" value="${s.name.en || ''}"/></div>
+      <div class="admin-field"><label>Tags</label><input id="st-${i}" value="${s.tags}"/></div>
+    </div>`).join('');
+}
+
+function saveBio() {
+  data.bio = { pt: document.getElementById('edit-bio-pt').value, en: document.getElementById('edit-bio-en').value };
+  persist(); renderBio(); flash('msg-bio');
+}
+function saveProjects() {
+  data.projects = data.projects.map((_,i) => ({
+    icon: document.getElementById(`pi-${i}`).value,
+    title: { pt: document.getElementById(`pt-pt-${i}`).value, en: document.getElementById(`pt-en-${i}`).value },
+    desc: { pt: document.getElementById(`pd-pt-${i}`).value, en: document.getElementById(`pd-en-${i}`).value },
+    link: document.getElementById(`pl-${i}`).value,
+    tags: document.getElementById(`pg-${i}`).value
+  }));
+  persist(); renderProjects(); flash('msg-proj');
+}
+function saveSkills() {
+  data.skills = data.skills.map((_,i) => ({
+    icon: document.getElementById(`si-${i}`).value,
+    name: { pt: document.getElementById(`sn-pt-${i}`).value, en: document.getElementById(`sn-en-${i}`).value },
+    tags: document.getElementById(`st-${i}`).value
+  }));
+  persist(); renderSkills(); flash('msg-skill');
+}
+function flash(id) {
+  const el = document.getElementById(id);
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 2500);
+}
+
+renderAll();
+</script>
 </body>
 </html>
